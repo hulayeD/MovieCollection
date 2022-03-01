@@ -169,12 +169,56 @@ public class MovieCollection
 
   private void searchKeywords()
   {
-    /* TASK 3: IMPLEMENT ME! */
+    System.out.println("Enter a keyword");
+    String Searchkeywords= scanner.nextLine();
+
+    Searchkeywords = Searchkeywords.toLowerCase();
+
+    ArrayList<Movie> words = new ArrayList<Movie>();
+
+    for (int i = 0; i < movies.size(); i++)
+    {
+      String movieKeyword = movies.get(i).getKeywords();
+      movieKeyword = movieKeyword.toLowerCase();
+
+      if (movieKeyword.indexOf(Searchkeywords) != -1)
+      {
+        //add the Movie objest to the results list
+        words.add(movies.get(i));
+      }
+    }
+    // sort the results by title
+//    sortResults(results);
+
+    // now, display them all to the user
+    for (int i = 0; i < words.size(); i++)
+    {
+      String keyword = words.get(i).getKeywords();
+
+      // this will print index 0 as choice 1 in the results list; better for user!
+      int num = i + 1;
+
+      System.out.println("" + num + ". " + keyword);
+    }
+
+    System.out.println("Which movie would you like to learn more about?");
+    System.out.print("Enter number: ");
+
+    int choice = scanner.nextInt();
+    scanner.nextLine();
+
+    Movie selectedMovie = words.get(choice - 1);
+
+    displayMovieInfo(selectedMovie);
+
+    System.out.println("\n ** Press Enter to Return to Main Menu **");
+    scanner.nextLine();
+
   }
   
   private void listGenres()
   {
-    /* TASK 5: IMPLEMENT ME! */
+
   }
   
   private void listHighestRated()
@@ -228,5 +272,83 @@ public class MovieCollection
   }
   
   // ADD ANY ADDITIONAL PRIVATE HELPER METHODS you deem necessary
+//  private void searchCast()
+//  {
+//    ArrayList<String> cast = new ArrayList<>();
+//    for (int i = 0; i < movies.size(); i++)
+//    {
+//      String fullCast = movies.get(i).getCast();
+//      String[] castList = fullCast.split("\\|");
+//      for (String actor : castList)
+//      {
+//        for (String actors : cast)
+//        {
+//          if (actor.equals(actors) == false)
+//          {
+//            cast.add(actor);
+//          }
+//        }
+//      }
+//      // get search term
+//      System.out.print("Enter a person to search for (first or last name): ");
+//      String name = scanner.nextLine();
+//      ArrayList<String> results = new ArrayList<>();
+//      for (String actor : cast)
+//      {
+//        if (actor.indexOf(name) != -1)
+//        {
+//          results.add(actor);
+//        }
+//      }
+//      //display results
+//      for (int j = 0; j < results.size(); j++)
+//      {
+//        String actor = results.get(j);
+//        int choiceNum = j + 1;
+//        System.out.println("" + choiceNum + ". " + actor);
+//      }
+//
+//      System.out.print("Which actor's movies do you want to explore?: ");
+//      int choice = scanner.nextInt();
+//      scanner.nextLine();
+//
+//
+//    }
+//  }
+//
+//  private void searchKeywords()
+//  {
+//    System.out.print("Enter a keyword search term: ");
+//    String keyword = scanner.nextLine();
+//    keyword = keyword.toLowerCase();
+//
+//    ArrayList<Movie> results = new ArrayList<Movie>();
+//    for (int i = 0; i < movies.size(); i++)
+//    {
+//      String keywords = movies.get(i).getKeywords();
+//      keywords = keywords.toLowerCase();
+//      if (keywords.indexOf(keyword) != -1)
+//      {
+//        results.add(movies.get(i));
+//      }
+//    }
+//    sortResults(results);
+//    for (int i = 0; i < results.size(); i++)
+//    {
+//      String currentTitle = results.get(i).getTitle();
+//      int choiceNum = i + 1;
+//
+//      System.out.println("" + choiceNum + ". " + currentTitle);
+//    }
+//
+//    System.out.print("Which movie would you like to learn more about?\nEnter number: ");
+//    int choice = scanner.nextInt();
+//    scanner.nextLine();
+//    Movie selectedMovie = results.get(choice - 1);
+//
+//    displayMovieInfo(selectedMovie);
+//    System.out.println("\n ** Press Enter to Return to Main Menu **");
+//    scanner.nextLine();
+//  }
 
 }
